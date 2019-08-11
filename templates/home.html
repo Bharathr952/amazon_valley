@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    <p>Welcome to my amazon!</p>
+
+    {% if session %}
+    <p> Welcome {{ session['username']}} </p>
+    <p>You've logged in! Welcome {{ session['username'] }}  </p>
+
+    {% else %}
+
+
+    <p> Have an account? Login Here!</p>
+    <form action='/login' method="POST">
+    	<input type="text" name="username" placeholder="enter username here..."><br>
+    	<input type="password" name="password" placeholder="enter the password here..."><br>
+    	<input type="submit" value="login">
+    </form>
+
+    <p> No account!Sign Up! </p>
+
+    <form action="/signup" method="POST">
+    	<input type="text" name="username" placeholder="username..."><br>
+    	<input type="text" name="fullname" placeholder="full name.."><br>
+    	<input type="text" name="email" placeholder="email"...><br>
+    	<input type="password" name="password1" placeholder="enter password here.."><br>
+    	<input type="password" name="password2" placeholder="confirm password here.."><br>
+    	<p>Buyer<input type="radio" name="c_type" value="buyer"></p>
+		<p>seller<input type="radio" name="c_type" value="seller"></p>
+		<input type="submit" value="Signup">
+	</form>
+
+ 
+ 	{% endif %}
+ 	{% endblock body %}
+
+
+
