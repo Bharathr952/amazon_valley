@@ -1,0 +1,32 @@
+
+{% extends 'layout.html' %}
+
+{% block body %}
+
+{% if session %}
+	<p> Welcome {{ session['username'] }}  </p>
+	<p> You've logged in as {{ session['c_type'] }}</p>
+
+	{% if session['c_type'] == 'seller' %}
+
+	<p> enter product details here </p>
+    <form action="/product_info" method="POST">
+	    <input type="text" name="product name" placeholder="enter product name here ..."><br>
+		<input type="text" name="product prize" placeholder="enter product prize here ..."><br>
+		<input type="text" name="product description" placeholder="enter product description here ..."><br>
+
+
+	{% endif %}
+
+	{%  else %}
+
+	<p> Have an account? Login here!</p>
+	<form action="/login" method="POST">
+		<input type="text" name="username" placeholder="enter username here ..."><br>
+		<input type="password" name="password" placeholder="enter password here ..."><br>
+		<input type="submit" value="Login">
+	{% endif %}
+	</form>
+
+
+ {% endblock body%}

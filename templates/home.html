@@ -5,10 +5,24 @@
     <p>Welcome to my amazon!</p>
 
     {% if session %}
-    <p> Welcome {{ session['username']}} </p>
-    <p>You've logged in! Welcome {{ session['username'] }}  </p>
+    <p> Welcome {{ session['username'] }}  </p>
+    <p> You've logged in as {{ session['c_type'] }}</p>
+    <p><a href="/products"> click here</a> to see products</p>
 
-    {% else %}
+    {% if session['c_type'] == 'seller' %}
+
+    <p> Enter product details here!</p>
+
+    <form action="/products" method="POST">
+        <input type="text" name="name" placeholder="enter product name..."><br>
+        <input type="text" name="info" placeholder="enter info about products "><br>
+        <input type="text" name="price" placeholder="enter product price..."><br>
+        <input type="submit" value ="add products">
+    </form>
+
+    {% endif %}
+
+    {%  else %}
 
 
     <p> Have an account? Login Here!</p>
@@ -31,9 +45,11 @@
 		<input type="submit" value="Signup">
 	</form>
 
+    </form>
+
  
  	{% endif %}
- 	{% endblock body %}
+ {% endblock body %}
 
 
 
